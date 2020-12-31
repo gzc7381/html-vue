@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-button @click="visible = true">Button</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+      <p>Try Element</p>
+    </el-dialog>
+    <el-select v-model="value" placeholder="请选择">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
+  </div>
+</body>
+  <!-- import 转es6语法 为了适配IE -->
+  <script src="./js/browser.min.js"></script>
+  <script src="./js/polyfill.min.js"></script>
+  <!-- import Vue before Element -->
+  <script src="./js/vue.js"></script>
+  <!-- import elementUI JS -->
+  <script src="./js/element.js"></script>
+  <!-- import axios JS -->
+  <script src="./js/axios.min.js">
+  //post请求
+  // axios.post('/user', {
+  //   firstName: 'Fred',
+  //   lastName: 'Flintstone'
+  // }).then(function (res) {
+  //   console.log(res);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+
+  //get请求
+  // axios.get('/user?ID=12345')
+  // .then(function (response) {
+  //   console.log(response);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+  </script>
+  <!-- 适配IE 引入的自己写的JS需添加 type="text/babel" -->
+  <script type="text/babel">
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { 
+          visible: false,
+          options: [{
+            value: '选项1',
+            label: '黄金糕'
+          }, {
+            value: '选项2',
+            label: '双皮奶'
+          }, {
+            value: '选项3',
+            label: '蚵仔煎'
+          }, {
+            value: '选项4',
+            label: '龙须面'
+          }, {
+            value: '选项5',
+            label: '北京烤鸭'
+          }],
+          value: ''
+        }
+      },
+      watch:{
+        value(newValue,oldValue){
+          console.log("🚀 ~ value ", newValue,oldValue)
+        }
+      },
+      methods:{
+      	//在这里写方法
+      }
+    })
+  </script>
+</html>
